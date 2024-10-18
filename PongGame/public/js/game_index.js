@@ -1,6 +1,8 @@
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
+// const { restart } = require('nodemon');
 const conf = require('../config/game_conf');
+const { Button } = require('./button');
 
 var score;
 var gameStarted;
@@ -19,6 +21,8 @@ var xBallIncrPos;
 var yBallIncrPos;
 
 var loopInterval;
+
+var restartButton;
 
 const initialize = () => {
     gameOver = false;
@@ -46,6 +50,14 @@ const initialize = () => {
 
     gameStarted = false;
     gameOver = false;
+
+    // console.log ('before new Button ');
+    restartButton = new Button ('Start again', '#eeaa00', '#001122');
+    restartButton.setPosition (canvas.width*0.35, canvas.height*0.75);
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    restartButton.setSize (120, 40);
+    // console.log ('after new Button');
+    // console.log ('restartButton ', restartButton);
+    
 }
 
 const showBorders =  () => {
@@ -116,8 +128,8 @@ const handlePaddleBallHit = () => {
         && ((yBallPos + conf.ballPaddleHeight/2) >= yPaddlePos)) {
             // ball hit the paddle
             score += 1;
-            console.log('increasing score ', score);
-            console.log(xBallPos, yBallPos, xPaddlePos, yPaddlePos);
+            // console.log('increasing score ', score);
+            // console.log(xBallPos, yBallPos, xPaddlePos, yPaddlePos);
             // continue
             // change direction of ball to bounce off paddle
             yBallDir = 'up';
@@ -143,6 +155,8 @@ const play = () => {
 
     // check wall hit left, right, top
     handleWallHit ();
+
+    showScoreOnGame();
 
     // check if point gained that is Paddle hit
     handlePaddleBallHit ();
@@ -200,16 +214,18 @@ const showGameOverMes = () => {
         let fontSize = 25;
     
         ctx.font = ''+fontSize+'px Arial';
-        console.log(' (canvas.width/2 - 75), (canvas.height/2 - (fontSize/2)) ', (canvas.width/2 - 75), (canvas.height/2 - (fontSize/2)));
+        // console.log(' (canvas.width/2 - 75), (canvas.height/2 - (fontSize/2)) ', (canvas.width/2 - 75), (canvas.height/2 - (fontSize/2)));
         ctx.strokeText ('Game Over !!', (canvas.width/2 - 75), (canvas.height/2 - (fontSize/2)));
         ctx.strokeText ('Score: '+score, (canvas.width/2 - 50), (canvas.height/2 + (fontSize/2)));   
+
+        restartButton.draw (ctx);
     }
 }
 
 const handleUserInput = (e) => {
     switch (e.keyCode) {
         case 37:
-            console.log('Left arrow pressed !!');
+            // console.log('Left arrow pressed !!');
             // the code for moving paddle to left to be written
 
             // if (dx > 0) {
@@ -221,7 +237,7 @@ const handleUserInput = (e) => {
             }
             break;
         case 39:
-            console.log('Right arrow pressed !!');
+            // console.log('Right arrow pressed !!');
             // the code for moving paddle to right to be written
 
             // if (dx < 0) {
@@ -232,16 +248,36 @@ const handleUserInput = (e) => {
             }
             break;
         case 32:
-            console.log('Space key pressed !!');
+            // console.log('Space key pressed !!');
             if (!gameStarted) {
                 startGame();
             }
             break;
         default:
-            console.log('No arrow key pressed !!');
+            // console.log('No arrow key pressed !!');
     }
 }
 
+const showScoreOnGame = () => {
+    ctx.fillStyle = 'cyan';
+    ctx.fillRect ((canvas.width - 100), 50, 50, 20);
+
+    let scoreFontSize = 10;
+    ctx.font = ''+scoreFontSize+'px "Comic Sans MS"';
+    ctx.strokeText ('Score: '+score, (canvas.width - 95), (63), 55);
+    // console.log('showing score ');
+}
+
+const handleRestartGame = (evt) => {
+    let x = evt.pageX - (canvas.clientLeft + canvas.offsetLeft);
+    let y = evt.pageY - (canvas.clientTop + canvas.offsetTop);
+
+    if (restartButton.inBounds (x, y) && !!restartButton.onClick)
+        restartButton.onClick(initialize);
+}
+
 window.addEventListener ('keydown', handleUserInput);
+
+window.addEventListener ('click', handleRestartGame);
 
 initialize();
