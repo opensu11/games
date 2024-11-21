@@ -1,0 +1,5 @@
+
+> ponggame@1.0.0 watch
+> watchify ./public/js/game_index.js -o ./public/js/bundle.js
+
+Terminate batch job (Y/N)? 

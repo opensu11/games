@@ -47,7 +47,7 @@ class Button {
 
     inBounds (mouseX, mouseY) {
         return !(mouseX < this.x || mouseX > (this.x + this.width) || 
-                    mouseY < this.y || mouseY > (this.y + this.height));
+            mouseY < this.y || mouseY > (this.y + this.height));
     }
 
     onClick (callStart) {
@@ -115,7 +115,7 @@ const initialize = () => {
     // console.log ('before new Button ');
     restartButton = new Button ('Start again', '#eeaa00', '#001122');
     restartButton.setPosition (canvas.width*0.35, canvas.height*0.75);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    restartButton.setSize (120, 40);
+    restartButton.setSize (120, 40);
     // console.log ('after new Button');
     // console.log ('restartButton ', restartButton);
     

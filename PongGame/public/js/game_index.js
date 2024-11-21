@@ -54,7 +54,7 @@ const initialize = () => {
     // console.log ('before new Button ');
     restartButton = new Button ('Start again', '#eeaa00', '#001122');
     restartButton.setPosition (canvas.width*0.35, canvas.height*0.75);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    restartButton.setSize (120, 40);
+    restartButton.setSize (120, 40);
     // console.log ('after new Button');
     // console.log ('restartButton ', restartButton);
     
