@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2024-12-08" view-index="0" gantt-divider-location="323" resource-divider-location="300" version="3.2.3247" locale="en_US">
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2024-11-01" view-index="0" gantt-divider-location="484" resource-divider-location="300" version="3.2.3247" locale="en_US">
     <description/>
-    <view zooming-state="default:4" id="gantt-chart">
-        <field id="tpd3" name="Name" width="184" order="0"/>
-        <field id="tpd4" name="Begin date" width="69" order="1"/>
-        <field id="tpd5" name="End date" width="69" order="2"/>
+    <view zooming-state="default:10" id="gantt-chart">
+        <field id="tpd3" name="Name" width="275" order="0"/>
+        <field id="tpd4" name="Begin date" width="104" order="1"/>
+        <field id="tpd5" name="End date" width="104" order="2"/>
         <option id="filter.completedTasks" value="false"/>
     </view>
     <view id="resource-table">
@@ -35,8 +35,8 @@
             <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
         </taskproperties>
         <task id="0" name="Games" color="#8cb6ce" meeting="false" start="2024-12-13" duration="49" complete="100" thirdDate="2024-12-13" thirdDate-constraint="0" expand="true">
-            <task id="1" name="Snake Game" meeting="false" start="2024-12-13" duration="49" complete="100" expand="true">
-                <task id="2" name="ErrorTasks" meeting="false" start="2024-12-13" duration="21" complete="100" expand="true">
+            <task id="1" name="Snake Game" meeting="false" start="2024-12-13" duration="49" complete="100" expand="false">
+                <task id="2" name="ErrorTasks" meeting="false" start="2024-12-13" duration="21" complete="100" expand="false">
                     <task id="3" name="But snake hitting self is not working" color="#8cb6ce" meeting="false" start="2024-12-24" duration="14" complete="100" thirdDate="2024-12-13" thirdDate-constraint="0" expand="true">
                         <notes>
                             <![CDATA[Fixed]]>
@@ -56,6 +56,18 @@
                     </notes>
                 </task>
             </task>
+        </task>
+        <task id="6" name="TicTacToe Game" meeting="false" start="2024-12-09" duration="105" complete="0" expand="true">
+            <task id="7" name="Draw the main screen with lines horizontally and vertically" color="#8cb6ce" meeting="false" start="2024-12-09" duration="14" complete="0" thirdDate="2024-12-09" thirdDate-constraint="0" expand="true">
+                <depend id="8" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="8" name="Allow the user to input a box" color="#8cb6ce" meeting="false" start="2024-12-27" duration="21" complete="0" thirdDate="2024-12-09" thirdDate-constraint="0" expand="true">
+                <depend id="9" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="9" name="Select a box from AI side" color="#8cb6ce" meeting="false" start="2025-01-27" duration="35" complete="0" thirdDate="2024-12-09" thirdDate-constraint="0" expand="true">
+                <depend id="10" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="10" name="Continue in the loop until one player wins" color="#8cb6ce" meeting="false" start="2025-03-17" duration="35" complete="0" thirdDate="2024-12-09" thirdDate-constraint="0" expand="true"/>
         </task>
     </tasks>
     <resources/>
